@@ -1,0 +1,64 @@
+Delivery app
+
+Core problem designed to solve
+Chaos of Manual Coordination: It eliminates the daily stress and time wasted by sellers making endless phone calls and WhatsApp messages to find available riders and track parcel locations.
+Cash-on-Delivery (COD) Delays: It solves the cash flow problem where riders delay remitting money collected from customers (Lipa ukiona bidhaa) or mix up the business's daily earnings with their own cash.
+Lack of Accountability and Disputes: It stops the "he-said, she-said" arguments regarding lost, delayed, or damaged packages by introducing digital proof of delivery and clear status tracking.
+Erratic and Unpredictable Pricing: It fixes the issue of riders arbitrarily changing delivery fees due to rain, traffic, or guesswork, providing flat, predictable pricing that sellers can pass on to their buyers.
+
+
+Justification
+Nairobi's booming social-commerce market is heavily choked by informal logistics. Small online sellers lose hours of productive time chasing riders, tracking deliveries over phone calls, and managing delayed Cash-on-Delivery remittances. This app digitizes the relationship between the e-commerce vendor and the delivery rider bringing predictable pricing, unified tracking, and financial security to the local peer-to-peer marketplace 
+
+
+DATABASE AND TABLE CREATED
+
+Table 1: users (The Sellers)
+This table stores the authentication credentials and business details for the online merchants (Jiji, Instagram, Facebook sellers) who are sending the parcels.
+id (SERIAL, Primary Key)
+business_name (VARCHAR(100), Not Null)
+contact_person (VARCHAR(100), Not Null)
+email (VARCHAR(100), Unique, Not Null)
+phone_number (VARCHAR(20), Unique, Not Null) — Crucial for M-Pesa tracking and communications
+password (VARCHAR(255), Not Null) — Hashed password string
+created_at (TIMESTAMP, Default NOW())
+Table 2: riders
+This table holds information about the Boda Boda riders who register on your platform to fulfill deliveries.
+id (SERIAL, Primary Key)
+full_name (VARCHAR(100), Not Null)
+phone_number (VARCHAR(20), Unique, Not Null)
+national_id (VARCHAR(20), Unique, Not Null) — Important for vetting, safety, and security
+number_plate (VARCHAR(20), Unique, Not Null) — e.g., KMCE 123X
+is_available (BOOLEAN, Default TRUE) — To check if they can accept a new gig
+password (VARCHAR(255), Not Null)
+created_at (TIMESTAMP, Default NOW())
+Table 3: deliveries
+The central transaction table. Every time a seller requests a dispatch, a row is created here to track the route and specifications.
+id (SERIAL, Primary Key)
+seller_id (INTEGER, Foreign Key referencing users(id) ON DELETE RESTRICT)
+rider_id (INTEGER, Foreign Key referencing riders(id) ON DELETE SET NULL) — Null if a rider hasn't accepted yet
+pickup_location (VARCHAR(255), Not Null) — e.g., CBD Kamukunji Trading Center
+destination (VARCHAR(255), Not Null) — e.g., Ngong Road, Stage 4
+customer_name (VARCHAR(100), Not Null)
+customer_phone (VARCHAR(20), Not Null)
+delivery_fee (NUMERIC(10,2), Not Null) — The calculated fixed fare for the rider
+status (VARCHAR(50), Default 'Pending') — Can be: 'Pending', 'Assigned', 'Picked Up', 'In Transit', 'Delivered', 'Cancelled'
+created_at (TIMESTAMP, Default NOW())
+Table 4: payments (COD Tracking)
+Because Cash-on-Delivery (COD) is vital for your app, this table tracks the money collected by the rider from the buyer, and its remittance status back to the seller.
+id (SERIAL, Primary Key)
+delivery_id (INTEGER, Foreign Key referencing deliveries(id) ON DELETE CASCADE)
+item_cost (NUMERIC(10,2), Not Null) — The value of the Jiji item being sold
+total_to_collect (NUMERIC(10,2), Not Null) — Item cost + delivery fee (if client pays delivery)
+payment_status (VARCHAR(50), Default 'Unpaid') — 'Unpaid', 'Collected By Rider', 'Remitted To Seller'
+mpesa_reference (VARCHAR(50), Unique, Nullable) — For validating payment receipts
+remitted_at (TIMESTAMP, Nullable)
+Table 5: delivery_logs (The History Timeline)
+To prevent "he-said, she-said" disputes, this table tracks timestamps every time a delivery status changes, providing an audit trail.
+id (SERIAL, Primary Key)
+delivery_id (INTEGER, Foreign Key referencing deliveries(id) ON DELETE CASCADE)
+old_status (VARCHAR(50))
+new_status (VARCHAR(50))
+updated_by_rider_id (INTEGER, Foreign Key referencing riders(id))
+notes (TEXT, Nullable) — e.g., "Customer phone busy, waiting at the gate"
+changed_at (TIMESTAMP, Default NOW())
