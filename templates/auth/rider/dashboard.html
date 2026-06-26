@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rider Dashboard - Nairobi Delivery App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        .dashboard-card {
+            border-radius: 12px;
+            border: none;
+        }
+        .status-badge {
+            font-size: 0.85rem;
+            padding: 0.4rem 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1 fs-5 fw-bold text-light">
+                <i class="bi bi-bicycle me-2"></i>Rider Portal
+            </span>
+            <div class="d-flex align-items-center gap-3">
+                <div class="form-check form-switch text-white mb-0">
+                    <input class="form-check-input bg-success border-success" type="checkbox" id="riderStatusToggle" checked onclick="toggleDutyStatus()">
+                    <label class="form-check-label small fw-medium" for="riderStatusToggle" id="dutyLabel">On Duty</label>
+                </div>
+                <a class="btn btn-outline-light btn-sm fw-semibold" href="/">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+        
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <h2 class="fw-bold mb-1">Jambo, Onesmas Barasa</h2>
+                <p class="text-muted">Stay safe on the road. Check your active trips and available orders below.</p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-md-end align-items-center">
+                <div class="p-3 bg-warning border rounded shadow-sm d-flex align-items-center gap-3 w-100 style-elem" style="max-width: 300px;">
+                    <div class="bg-success-subtle text-success rounded p-2 fs-3">
+                        <i class="bi bi-wallet2"></i>
+                    </div>
+                    <div>
+                        <span class="text-muted small d-block fw-semibold">Today's Earnings</span>
+                        <h4 class="fw-bold text-success mb-0">KES 1,850</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <h4 class="fw-bold mb-3 text-dark d-flex align-items-center">
+                <span class="spinner-grow spinner-grow-sm text-warning me-2" role="status"></span>
+                Active Job Route
+            </h4>
+            
+            <div class="bg-body-secondary card shadow-sm border-start border-warning border-4 dashboard-card p-4 bg-white">
+                <div class="card-body p-1">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+                        <div>
+                            <span class="badge bg-warning text-dark status-badge rounded-pill fw-semibold mb-1">In Transit</span>
+                            <h5 class="fw-bold mb-0 text-dark">Delivery Reference #1024</h5>
+                        </div>
+                        <div class="text-end">
+                            <span class="text-muted small d-block">Payout Value</span>
+                            <span class="fw-bold text-success fs-5">KES 300</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-light rounded border mb-4">
+                        <div class="mb-3">
+                            <span class="text-muted small d-block"><i class="bi bi-shop text-primary me-1"></i> Pickup Merchant:</span>
+                            <span class="fw-semibold">The Donn Shop — Ngong Road Cluster</span>
+                        </div>
+                        <div class="mb-0">
+                            <span class="text-muted small d-block"><i class="bi bi-geo-alt-fill text-danger me-1"></i> Customer Drop-off:</span>
+                            <span class="fw-semibold">Jane Doe — House 4B, Ngong Road Area</span>
+                            <a href="tel:0712345678" class="btn btn-sm btn-outline-secondary py-0 px-2 ms-2"><i class="bi bi-telephone-fill small"></i> Call</a>
+                        </div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button class="btn btn-success py-2.5 fw-bold" onclick="completeDelivery()">
+                            <i class="bi bi-check-circle me-2"></i> Mark Job as Delivered Successfully
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- available jobs section -->
+        <div>
+            <h4 class="fw-bold mb-3 text-dark"><i class="bi bi-collection-play me-2"></i>Available Delivery Jobs</h4>
+            <p class="text-muted small">Tap an open ticket order profile to accept the delivery routing task.</p>
+            <!-- cards -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="card shadow-sm border-0 dashboard-card p-3 bg-white bg-body-secondary">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-bold text-dark">Order #1029</span>
+                                <span class="fw-bold text-success">KES 250</span>
+                            </div>
+                            <hr class="my-2">
+                            <p class="card-text text-muted small mb-3">
+                                <strong>From:</strong> Cherish & Co (Utawala Mall)<br>
+                                <strong>To:</strong> Fedha Estate, Gate B
+                            </p>
+                            <button class="btn btn-sm btn-outline-success w-100 fw-semibold">Accept Delivery Route</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card shadow-sm border-0 dashboard-card p-3 bg-white bg-body-secondary">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-bold text-dark">Order #1030</span>
+                                <span class="fw-bold text-success">KES 400</span>
+                            </div>
+                            <hr class="my-2">
+                            <p class="card-text text-muted small mb-3">
+                                <strong>From:</strong> MJ Duos (CBD Dubois Street)<br>
+                                <strong>To:</strong> Karen Plains Apartments
+                            </p>
+                            <button class="btn btn-sm btn-outline-success w-100 fw-semibold">Accept Delivery Route</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container text-muted small">
+            &copy; 2026 Nairobi Delivery App. Authorized Rider Logistics Console.
+        </div>
+    </footer>
+
+    <script>
+        function toggleDutyStatus() {
+            const toggle = document.getElementById('riderStatusToggle');
+            const label = document.getElementById('dutyLabel');
+            if (toggle.checked) {
+                label.textContent = "On Duty";
+                label.className = "form-check-label small fw-medium text-success";
+            } else {
+                label.textContent = "Off Duty";
+                label.className = "form-check-label small fw-medium text-muted";
+                alert("You are now Offline. You won't receive live package alerts until you toggle back active.");
+            }
+        }
+
+        function completeDelivery() {
+            if(confirm("Confirm that you have received payment (or verified code submission) and completed package delivery?")) {
+                alert("Job finalized. Payout has been updated into your rider wallet!");
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

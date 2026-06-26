@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rider Registration - Nairobi Delivery App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        .register-card {
+            border-radius: 12px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-light bg-primary shadow-sm">
+        <div class="container">
+            <a class="btn btn-outline-dark btn-sm fw-semibold" href="/auth/rider/login">
+                <i class="bi bi-arrow-left me-1"></i> Back to Login
+            </a>
+            <span class="navbar-brand mb-0 h1 fs-6 text-muted">MJ-Delivery App</span>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+
+                <div class="card shadow-sm register-card p-4 bg-body-secondary">
+                    <div class="card-body">
+                        
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold h3 mb-1">Onboarding Form</h2>
+                            <p class="text-muted small">Fill out the complete fleet profile breakdown below to register your vehicle assets.</p>
+                        </div>
+
+                        <form action="/auth/rider/register" method="POST" enctype="multipart/form-data">
+                            
+                            <h5 class="fw-bold text-success border-bottom pb-2 mb-3"><i class="bi bi-person-badge me-2"></i>1. Personal Information</h5>
+                            
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="rider_name" class="form-label fw-semibold">Full Name</label>
+                                    <input type="text" class="form-control" id="rider_name" name="rider_name" placeholder="e.g., Daniel Michael " required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="rider_id_number" class="form-label fw-semibold">National ID Number</label>
+                                    <input type="text" class="form-control" id="rider_id_number" name="rider_id_number" placeholder="e.g., 12345678" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label fw-semibold">Safaricom Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="e.g., 0756295128" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label fw-semibold">Email Address</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="e.g., danielmichael@gmail.com" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="profile_pic" class="form-label fw-semibold">Rider Profile Picture</label>
+                                    <input type="file" class="form-control" id="profile_pic" name="profile_pic" accept="image/*" required>
+                                    <div class="form-text small">Upload a clear headshot photo for customer verification identification displays.</div>
+                                </div>
+                            </div>
+
+                            <h5 class="fw-bold text-success border-bottom pb-2 mb-3"><i class="bi bi-truck me-2"></i>2. Fleet & Transit Mechanics</h5>
+                            
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-4">
+                                    <label for="bike_type" class="form-label fw-semibold">Vehicle Asset Classification</label>
+                                    <select class="form-select" id="bike_type" name="bike_type" required onchange="handleNumberPlateRequired()">
+                                        <option value="" selected disabled>-- Choose Asset --</option>
+                                        <option value="bicycle">Bicycle</option>
+                                        <option value="motorbike">Motorbike (Piki Piki)</option>
+                                        <option value="pickup">Probox</option>
+                                        <option value="pickup">Pickup Truck</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="number_plate" class="form-label fw-semibold" id="plate-label">Number Plate</label>
+                                    <input type="text" class="form-control" id="number_plate" name="number_plate" placeholder="e.g., KCM 381V" style="text-transform: uppercase;">
+                                    <div class="form-text small" id="plate-help">Required for motorized assets.</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="stage" class="form-label fw-semibold">Base Stage / Operations Hub</label>
+                                    <input type="text" class="form-control" id="stage" name="stage" placeholder="e.g., Ngong Road Stage / Utawala" required>
+                                </div>
+                            </div>
+
+                            <h5 class="fw-bold text-success border-bottom pb-2 mb-3"><i class="bi bi-shield-lock me-2"></i>3. Access Passwords</h5>
+                            
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label for="password" class="form-label fw-semibold">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Create a secure password" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="confirm_password" class="form-label fw-semibold">Confirm Password</label>
+                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Re-enter password" required>
+                                </div>
+                            </div>
+
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-success py-3 fw-bold shadow-sm">
+                                    <i class="bi bi-cloud-upload me-2"></i> Submit Registration Profile
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container text-muted small">
+            &copy; 2026 Nairobi Delivery App. Secure Fleet Registry Framework.
+        </div>
+    </footer>
+
+    <script>
+        function handleNumberPlateRequired() {
+            const assetType = document.getElementById('bike_type').value;
+            const plateInput = document.getElementById('number_plate');
+            const label = document.getElementById('plate-label');
+            
+            if (assetType === 'bicycle') {
+                plateInput.removeAttribute('required');
+                plateInput.placeholder = "Not required for bicycles";
+                plateInput.disabled = true;
+                plateInput.value = '';
+                label.className = "form-label fw-semibold text-muted";
+            } else {
+                plateInput.setAttribute('required', 'true');
+                plateInput.placeholder = "e.g., KMCE 123X";
+                plateInput.disabled = false;
+                label.className = "form-label fw-semibold text-dark";
+            }
+        }
+        
+        // Auto capitalise input letters for vehicle number plates
+        document.getElementById('number_plate').addEventListener('input', function() {
+            this.value = this.value.toUpperCase();
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

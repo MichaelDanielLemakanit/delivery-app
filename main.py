@@ -1,132 +1,72 @@
-from functools import wraps
-from flask import Flask, render_template, request, redirect, url_for, flash, session
-from flask_bcrypt import Bcrypt
+from flask import Flask, render_template, request, redirect, url_scheduler, flash
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key_here"  # Required for flash messages and sessions
-bcrypt = Bcrypt(app)
+# Secret key is required for session management and flashing validation messages
+app.secret_key = 'nairobi_delivery_app_secret_key_2026'
 
-# --- MOCK DATABASE FOR TESTING ---
-# We preload a test user so you can log in immediately.
-# Password for Daniel is: admin123
-MOCK_USERS_DB = {
-    "daniel@mjdelivery.com": {
-        "email": "daniel@mjdelivery.com",
-        "password_hash": bcrypt.generate_password_hash("admin123").decode('utf-8')
-    }
-}
-
-def query_user_from_db(email):
-    # Checks if the email exists in our dictionary database
-    return MOCK_USERS_DB.get(email) 
-
-
+# ==========================================
+# 🏠 1. MAIN LANDING GATEWAY
+# ==========================================
 @app.route('/')
-@app.route("/home")
-def home():
-    # If already logged in, skip the landing page and go straight to dashboard
-    if 'email' in session:
-        return redirect(url_for('dashboard'))
+def index():
     return render_template('index.html')
 
 
-# 1. Access Control Decorator
-def login_required(f):
-    @wraps(f)
-    def protected(*args, **kwargs):
-        if 'email' not in session:
-            flash("Please log in or register first.", "warning")
-            return redirect(url_for('login'))
-        return f(*args, **kwargs)
-    return protected
-
-
-# 2. Login Route
-@app.route("/login", methods=['GET', 'POST'])
-def login():
-    if 'email' in session:
-        return redirect(url_for('dashboard'))
-
+# ==========================================
+# 🛒 2. CUSTOMER / RECEIVER ROUTES
+# ==========================================
+@app.route('/auth/customer/login', methods=['GET', 'POST'])
+def customer_login():
     if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
+        delivery_id = request.form.get('delivery_id')
+        customer_phone = request.form.get('customer_phone')
         
-        user = query_user_from_db(email) 
-        
-        # SCENARIO: Account was not found
-        if user is None:
-            flash("Account not found. Please register an account first!", "danger")
-            return redirect(url_for('register'))
-            
-        # SCENARIO: Account found, verify password
-        if bcrypt.check_password_hash(user['password_hash'], password):
-            session['email'] = email
-            flash("Login successful!", "success")
-            return redirect(url_for('dashboard'))
+        # TODO: Connect database query here to validate order
+        # For now, let's pretend ID '1024' is a valid order matching any phone
+        if delivery_id == '1024':
+            return redirect('/auth/customer/order_details')
         else:
-            flash("Incorrect password. Please try again.", "danger")
+            flash('Invalid Tracking ID or Phone Number. Please try again.', 'error')
+            return redirect('/auth/customer/login')
             
-    return render_template('login.html')
+    return render_template('auth/customer/login.html')
+
+@app.route('/auth/customer/order_details')
+def customer_order_details():
+    return render_template('auth/customer/order_details.html')
 
 
-# 3. Registration Route
-@app.route("/register", methods=['GET', 'POST'])
-def register():
+# ==========================================
+# 🏢 3. SELLER / MERCHANT ROUTES
+# ==========================================
+@app.route('/auth/seller/login', methods=['GET', 'POST'])
+def seller_login():
     if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
-        
-        if email in MOCK_USERS_DB:
-            flash("Email already registered!", "danger")
-            return redirect(url_for('register'))
-            
-        # Hash the password and save it into our mock database
-        hashed_pw = bcrypt.generate_password_hash(password).decode('utf-8')
-        MOCK_USERS_DB[email] = {
-            "email": email,
-            "password_hash": hashed_pw
-        }
-        
-        flash("Registration successful! You can now log in.", "success")
-        return redirect(url_for('login'))
-        
-    return render_template('register.html')
+        return redirect('/auth/seller/dashboard')
+    return render_template('auth/seller/login.html')
+
+@app.route('/auth/seller/dashboard')
+def seller_dashboard():
+    return render_template('auth/seller/dashboard.html')
 
 
-# 4. Logout Route (NEW)
-@app.route("/logout")
-def logout():
-    session.pop('email', None) # Clears user out of session tracking
-    flash("You have been successfully logged out.", "info")
-    return redirect(url_for('login'))
+# ==========================================
+# 🏍️ 4. RIDER ROUTES
+# ==========================================
+@app.route('/auth/rider/login', methods=['GET', 'POST'])
+def rider_login():
+    if request.method == 'POST':
+        return redirect('/auth/rider/dashboard')
+    return render_template('auth/rider/login.html')
+
+@app.route('/auth/rider/dashboard')
+def rider_dashboard():
+    return render_template('auth/rider/dashboard.html')
 
 
-# --- Protected Routes ---
-@app.route("/dashboard")
-@login_required
-def dashboard():
-    return render_template('dashboard.html')
-
-@app.route("/newdelivery")
-@login_required  
-def newdelivery():
-    return render_template('newdelivery.html')
-
-@app.route("/riders")
-@login_required  
-def riders():
-    return render_template('riders.html')
-
-@app.route("/seller")
-@login_required  
-def seller():
-    return render_template('seller.html')
-
-@app.route("/notification")
-@login_required  
-def notification():
-    return render_template('notification.html')
-
-
+# ==========================================
+# 🚀 SERVER STARTUP ENGINE
+# ==========================================
 if __name__ == '__main__':
-    app.run(debug=True)
+    # debug=True automatically updates the page when you save code changes
+    app.run(debug=True, port=5000)
