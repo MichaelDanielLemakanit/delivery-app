@@ -49,6 +49,7 @@
 
         <div class="row g-4 justify-content-center">
 
+            <!-- marchant/seller card -->
             <div class="col-md-4">
                 <div class="card  bg-body-secondary h-100 text-center border-0 shadow-sm role-card p-4">
                     <div class="card-body d-flex flex-column justify-content-between">
@@ -60,12 +61,13 @@
                             <p class="card-text text-muted">Manage your online shops, request new deliveries, track sent
                                 packages, and verify customer payments.</p>
                         </div>
-                        <a href="/auth/seller/login" class="btn btn-primary w-100 mt-4 py-2 fw-semibold">Enter Merchant
+                        <a href="{{ url_for('seller_login') }}"
+                            class="btn btn-primary w-100 mt-4 py-2 fw-semibold">Enter Merchant
                             Portal</a>
                     </div>
                 </div>
             </div>
-
+            <!-- rider card -->
             <div class="col-md-4">
                 <div class="card  bg-body-secondary h-100 text-center border-0 shadow-sm role-card p-4">
                     <div class="card-body d-flex flex-column justify-content-between">
@@ -77,12 +79,13 @@
                             <p class="card-text text-muted">Toggle your availability, find pending deliveries around
                                 Nairobi, manage active trips, and get paid.</p>
                         </div>
-                        <a href="/auth/rider/login" class="btn btn-success w-100 mt-4 py-2 fw-semibold">Enter Rider
+                        <a href="{{ url_for('rider_login') }}" class="btn btn-success w-100 mt-4 py-2 fw-semibold">Enter
+                            Rider
                             Portal</a>
                     </div>
                 </div>
             </div>
-
+            <!-- parkage card -->
             <div class="col-md-4">
                 <div class="card  bg-body-secondary h-100 text-center border-0 shadow-sm role-card p-4">
                     <div class="card-body d-flex flex-column justify-content-between">
@@ -94,7 +97,7 @@
                             <p class="card-text text-muted">Expecting a delivery? Enter your phone number and tracking
                                 ID to watch live status logs or upload M-Pesa codes.</p>
                         </div>
-                        <a href="/auth/customer/login"
+                        <a href="{{ url_for('customer_login') }}"
                             class="btn btn-warning w-100 mt-4 py-2 fw-semibold text-dark">Track Your Order</a>
                     </div>
                 </div>
@@ -103,9 +106,9 @@
         </div>
     </main>
 
-    <footer class="bg-dark text-danger text-center py-3 mt-5">
+    <footer class="bg-primary text-danger text-center py-3 mt-5">
         <div class="container text-muted small">
-           <p> &copy; 2026 Nairobi Delivery App. All rights reserved. Built for seamless local logistics.</p>
+            <p> &copy; 2026 Nairobi Delivery App. All rights reserved. Built for seamless local logistics.</p>
         </div>
     </footer>
 
