@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Hub - Nairobi Delivery App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+
+        .dashboard-card {
+            border-radius: 12px;
+            border: none;
+        }
+
+        .status-badge {
+            font-size: 0.85rem;
+            padding: 0.4rem 0.8rem;
+        }
+
+        .store-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .store-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0.5rem 1rem 1rem rgba(0, 0, 0, 0.1) !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Matching Navbar Structure -->
+    <nav class="navbar navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1 fs-5 fw-bold text-light">
+                <i class="bi bi-bag-heart me-2"></i>MJ-Delivery App
+            </span>
+            <div class="d-flex align-items-center gap-3">
+                <a class="btn btn-light btn-sm fw-bold px-3 text-primary" href="#track-orders">
+                    <i class="bi bi-box-seam me-1"></i> Track Orders
+                </a>
+                <a class="btn btn-outline-light btn-sm fw-semibold" href="/">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+
+        <!-- Welcome Section and Cart Status -->
+        <div class="row g-3 mb-5">
+            <div class="col-md-6">
+                <h2 class="fw-bold mb-1">Jambo, Sabaya</h2>
+                <p class="text-muted">Explore vetted local hubs and request immediate on-demand courier
+                    dispatch runs across Nairobi.</p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-md-end align-items-center">
+                <div class="p-3 bg-white border rounded shadow-sm d-flex align-items-center gap-3 w-100 style-elem"
+                    style="max-width: 300px;">
+                    <div class="bg-primary-subtle text-primary rounded p-2 fs-3">
+                        <i class="bi bi-cart3"></i>
+                    </div>
+                    <div>
+                        <span class="text-muted small d-block fw-semibold">Active Shopping Basket</span>
+                        <h4 class="fw-bold text-primary mb-0" id="cart-counter">0 Items</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Partnered Stores / Vendors Grid -->
+        <div class="mb-5">
+            <h4 class="fw-bold mb-3 text-dark"><i class="bi bi-shop me-2"></i>Order from Partnered Stores</h4>
+            <p class="text-muted small">Select a retail storefront below to browse products and set up a delivery route.
+            </p>
+            <div class="btn mb-2">
+                <button type="button" class="btn btn-warning">Edit Store</button>
+                <button type="button" class="btn btn-primary">Add Store</button>
+                <button type="button" class="btn btn-danger">Delete Store</button>
+            </div>
+
+            <div class="row g-4">
+                <!-- Vendor 1: The Donn Shop -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm border-0 dashboard-card p-3 bg-white store-card"
+                        onclick="browseStore('MJ Duos')">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="bg-primary-subtle text-primary rounded p-3 fs-3">
+                                    <i class="bi bi-printer"></i>
+                                </div>
+                                <div class="form-check form-switch text-black mb-0">
+                                    <input class="form-check-input bg-success border-success" type="checkbox" id="sellerStatusToggle" checked onclick="toggleDutyStatus()">
+                                    <label class="form-check-label small fw-medium" for="riderStatusToggle" id="dutyLabel">Active</label>
+                                </div>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">The Donn</h5>
+                            <p class="text-muted small mb-3">Ngong Road Cluster • Custom Branded Apparel & Premium
+                                Outfits
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                <span class="text-muted small"><i class="bi bi-clock me-1"></i> Delivery: ~35
+                                    mins</span>
+                                <span class="text-success fw-bold small">KES 500 base</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vendor 2: MJ Duos -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm border-0 dashboard-card p-3 bg-white store-card"
+                        onclick="browseStore('MJ Duos')">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="bg-primary-subtle text-primary rounded p-3 fs-3">
+                                    <i class="bi bi-phone"></i>
+                                </div>
+                                <div class="form-check form-switch text-black mb-0">
+                                    <input class="form-check-input bg-success border-success" type="checkbox" id="sellerStatusToggle" checked onclick="toggleDutyStatus()">
+                                    <label class="form-check-label small fw-medium" for="riderStatusToggle" id="dutyLabel">Active</label>
+                                </div>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">MJ Duos</h5>
+                            <p class="text-muted small mb-3">CBD Dubois Street • Smart Tech Accessories & Electronics
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                <span class="text-muted small"><i class="bi bi-clock me-1"></i> Delivery: ~35
+                                    mins</span>
+                                <span class="text-success fw-bold small">KES 400 base</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vendor 3: Cherish & Co -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm border-0 dashboard-card p-3 bg-white store-card"
+                        onclick="browseStore('Cherish & Co')">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="bg-primary-subtle text-primary rounded p-3 fs-3">
+                                    <i class="bi bi-gift"></i>
+                                </div>
+                                <div class="form-check form-switch text-black mb-0">
+                                    <input class="form-check-input bg-success border-success" type="checkbox" id="sellerStatusToggle" checked onclick="toggleDutyStatus()">
+                                    <label class="form-check-label small fw-medium" for="riderStatusToggle" id="dutyLabel">Active</label>
+                                </div>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Cherish & Co</h5>
+                            <p class="text-muted small mb-3">Utawala Mall • Custom Tailoring & Essential Gifts</p>
+                            <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                <span class="text-muted small"><i class="bi bi-clock me-1"></i> Delivery: ~40
+                                    mins</span>
+                                <span class="text-success fw-bold small">KES 250 base</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Active Packages Tracker Panel -->
+        <div class="mb-5" id="track-orders">
+            <h4 class="fw-bold mb-3 text-dark d-flex align-items-center">
+                <span class="spinner-grow spinner-grow-sm text-warning me-2" role="status"></span>
+                Your Active Deliveries
+            </h4>
+
+            <div class="card shadow-sm border-start border-warning border-4 dashboard-card p-4 bg-white mb-3">
+                <div class="card-body p-1">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+                        <div>
+                            <span class="badge bg-warning text-dark status-badge rounded-pill fw-semibold mb-1">In
+                                Transit</span>
+                            <h5 class="fw-bold mb-0 text-dark">Order Reference #1024</h5>
+                            <small class="text-muted">From: <strong>The Donn Shop</strong></small>
+                        </div>
+                        <div class="text-md-end">
+                            <span class="text-muted small d-block">Est. Arrival Time</span>
+                            <span class="fw-bold text-primary fs-5"><i class="bi bi-clock me-1"></i> ~20 Mins</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-light rounded border mb-3">
+                        <div class="small text-muted mb-1"><i class="bi bi-bicycle text-primary me-1"></i> Assigned
+                            Logistics Transporter:</div>
+                        <div class="fw-semibold d-flex align-items-center gap-2">
+                            Onesmas Barasa
+                            <a href="tel:0700000000" class="btn btn-sm btn-outline-secondary py-0 px-2 fs-7"><i
+                                    class="bi bi-telephone-fill"></i> Call Rider</a>
+                        </div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button class="btn btn-outline-primary py-2 fw-semibold" onclick="viewLiveTracking('1024')">
+                            <i class="bi bi-geo-alt-fill me-1"></i> Open Live Route Tracking Page
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Matching Footer -->
+    <footer class="bg-primary text-white text-center py-3 mt-auto">
+        <div class="container text-muted small">
+            &copy; 2026 Nairobi Delivery App. Client Portal Interface. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+                function toggleDutyStatus() {
+            const toggle = document.getElementById('sellerStatusToggle');
+            const label = document.getElementById('dutyLabel');
+            if (toggle.checked) {
+                label.textContent = "Active";
+                label.className = "form-check-label small fw-medium text-success";
+            } else {
+                label.textContent = "Clossed";
+                label.className = "form-check-label small fw-medium text-muted";
+                alert("Your shop is now Clossed. You won't receive any info from the customers and riders live package alerts until you toggle back active.");
+            }
+        }
+        function browseStore(storeName) {
+            alert("Redirecting to " + storeName + "'s marketplace catalog catalog view to fill up your shopping package basket.");
+        }
+
+        function viewLiveTracking(orderId) {
+            alert("Opening dynamic maps tracking telemetry framework for Package Order Run #" + orderId);
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

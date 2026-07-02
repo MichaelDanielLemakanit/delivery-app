@@ -12,20 +12,29 @@ def home():
 # marchant/seller route
 @app.route('/seller/login')
 def seller_login():
+    if 'user_id' in session:
+        return redirect(url_for('dashboard.html'))
+    else:
+        return redirect(url_for('register.html'))
     return render_template('auth/seller/login.html')
 
-
+# rider login route
 @app.route('/rider/login')
 def rider_login():
+    # if 'user_id' in session:
+    #     return redirect(url_for('home'))
+    # else:
+    #     return redirect(url_for('register.html'))
     return render_template('auth/rider/login.html')
-
-
 
 
 # customers route
 @app.route('/customer/login')
 def customer_login():
-    # Tell Flask to look inside the auth and customer subfolders
+    if 'user_id' in session:
+        return redirect(url_for('home'))
+    else:
+        return redirect(url_for('register.html'))
     return render_template('auth/customer/login.html', login='customer_login')
 
 

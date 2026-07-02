@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard - Nairobi Delivery App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        .dashboard-card {
+            border-radius: 12px;
+            border: none;
+        }
+        .status-badge {
+            font-size: 0.85rem;
+            padding: 0.4rem 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Matching Navbar Structure -->
+    <nav class="navbar navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1 fs-5 fw-bold text-light">
+                <i class="bi bi-shop me-2"></i>Seller/Merchant Portal
+            </span>
+            <div class="d-flex align-items-center gap-3">
+                <a class="btn btn-light btn-sm fw-bold px-3 text-primary" href="/create-order">
+                    <i class="bi bi-plus-circle-fill me-1"></i> New Dispatch
+                </a>
+                <a class="btn btn-outline-light btn-sm fw-semibold" href="/">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4">
+        
+        <!-- Welcome Section and Store Earnings -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <h2 class="fw-bold mb-1">Welcome Back, The Donn Shop</h2>
+                <p class="text-muted">Ngong Road Cluster • Manage inventory shipments, trace dispatches, and coordinate logistics routes.</p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-md-end align-items-center">
+                <div class="p-3 bg-warning border rounded shadow-sm d-flex align-items-center gap-3 w-100 style-elem" style="max-width: 300px;">
+                    <div class="bg-primary-subtle text-primary rounded p-2 fs-3">
+                        <i class="bi bi-cash-stack"></i>
+                    </div>
+                    <div>
+                        <span class="text-muted small d-block fw-semibold">Today's Sales Value</span>
+                        <h4 class="fw-bold text-primary mb-0">KES 14,200</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Summary Mini Metrics -->
+        <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3">
+                <div class="card p-3 shadow-sm border-0 text-center dashboard-card bg-warning-subtle">
+                    <span class="text-muted small d-block mb-1">Active Dispatches</span>
+                    <h3 class="fw-bold text-warning mb-0">3</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card p-3 shadow-sm border-0 text-center dashboard-card bg-primary-subtle">
+                    <span class="text-muted small d-block mb-1">Pending Pickups</span>
+                    <h3 class="fw-bold text-info mb-0">1</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card p-3 shadow-sm border-0 text-center dashboard-card bg-success-subtle">
+                    <span class="text-muted small d-block mb-1">Completed Today</span>
+                    <h3 class="fw-bold text-success mb-0">8</h3>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card p-3 shadow-sm border-0 text-center dashboard-card bg-danger-subtle">
+                    <span class="text-muted small d-block mb-1">Cancelled Order Runs</span>
+                    <h3 class="fw-bold text-danger mb-0">0</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Dispatches Tracking Panel -->
+        <div class="mb-5">
+            <h4 class="fw-bold mb-3 text-dark d-flex align-items-center">
+                <span class="spinner-grow spinner-grow-sm text-primary me-2" role="status"></span>
+                Live Order Runs & Dispatches
+            </h4>
+            
+            <div class="card shadow-sm dashboard-card p-4 bg-white">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="py-3">Order ID</th>
+                                    <th class="py-3">Customer Information</th>
+                                    <th class="py-3">Assigned Transporter</th>
+                                    <th class="py-3">Fulfillment Status</th>
+                                    <th class="py-3 text-end">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Item Row 1 -->
+                                <tr>
+                                    <td><span class="fw-bold text-dark">#1024</span></td>
+                                    <td>
+                                        <div class="fw-semibold">Jane Doe</div>
+                                        <span class="text-muted small">House 4B, Ngong Road Area</span>
+                                    </td>
+                                    <td>
+                                        <div class="small fw-medium"><i class="bi bi-bicycle text-primary me-1"></i> Onesmas Barasa</div>
+                                        <a href="tel:0700000000" class="text-decoration-none small text-muted">Call Rider</a>
+                                    </td>
+                                    <td><span class="badge bg-warning text-dark status-badge rounded-pill fw-semibold">In Transit</span></td>
+                                    <td class="text-end">
+                                        <button class="btn btn-sm btn-outline-primary" onclick="viewLiveStatus('1024')">Track Run</button>
+                                    </td>
+                                </tr>
+                                <!-- Item Row 2 -->
+                                <tr>
+                                    <td><span class="fw-bold text-dark">#1023</span></td>
+                                    <td>
+                                        <div class="fw-semibold">John Maina</div>
+                                        <span class="text-muted small">Kilimani Apartments, Room 12</span>
+                                    </td>
+                                    <td>
+                                        <div class="small fw-medium text-muted"><i class="bi bi-person me-1"></i> Waiting Allocation</div>
+                                    </td>
+                                    <td><span class="badge bg-info text-dark status-badge rounded-pill fw-semibold">Pending Pickup</span></td>
+                                    <td class="text-end">
+                                        <button class="btn btn-sm btn-outline-danger" onclick="cancelOrderRun('1023')">Cancel</button>
+                                    </td>
+                                </tr>
+                                <!-- Item Row 3 -->
+                                <tr>
+                                    <td><span class="fw-bold text-dark">#1020</span></td>
+                                    <td>
+                                        <div class="fw-semibold">Alex Mwangi</div>
+                                        <span class="text-muted small">Westlands Commercial Core</span>
+                                    </td>
+                                    <td>
+                                        <div class="small fw-medium"><i class="bi bi-bicycle text-primary me-1"></i> Peter Njoroge</div>
+                                    </td>
+                                    <td><span class="badge bg-success status-badge rounded-pill fw-semibold">Delivered</span></td>
+                                    <td class="text-end">
+                                        <span class="text-muted small fw-semibold d-inline-block p-1">Settled</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Matching Footer -->
+    <footer class="bg-primary text-white text-center py-3 mt-auto">
+        <div class="container text-muted small">
+            &copy; 2026 Nairobi Delivery App. Merchant Business Logistics Console.
+        </div>
+    </footer>
+
+    <script>
+        function viewLiveStatus(orderId) {
+            alert("Fetching delivery routing updates for Order #" + orderId + ". Assigned Courier status telemetry is operating live.");
+        }
+
+        function cancelOrderRun(orderId) {
+            if(confirm("Are you sure you want to recall and cancel delivery request run for Order #" + orderId + "?")) {
+                alert("Order dispatch ticket cancelled. Logistics run halted.");
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
