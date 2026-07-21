@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Order Return - Nairobi Delivery App</title>
+    <title>Submit Payment - Nairobi Delivery App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <style>
@@ -13,75 +14,64 @@
             display: flex;
             flex-direction: column;
         }
+
         main {
             flex: 1 0 auto;
         }
-        .return-card {
+
+        .payment-card {
             border-radius: 12px;
             border: none;
         }
     </style>
 </head>
+
 <body>
 
     <nav class="navbar navbar-light bg-warning shadow-sm">
         <div class="container">
-            <a class="btn btn-sm fw-semibold" href="/">
+            <a class="btn btn-sm fw-semibold" href="dashboard.html">
                 <i class=" bi bi-arrow-left me-1"></i> Exit
             </a>
             <span class="navbar-brand mb-0 h1 fs-6 text-muted">MJ-Delivery App</span>
         </div>
     </nav>
-    
 
     <main class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
 
-                <div class="card shadow-sm return-card p-4 bg-body-secondary">
+                <div class="card shadow-sm payment-card p-4 bg-body-secondary">
                     <div class="card-body">
-                        
+
                         <div class="text-center mb-4">
-                            <div class="text-danger mb-2">
-                                <i class="bi bi-arrow-counterclockwise display-4"></i>
+                            <div class="text-primary mb-2">
+                                <i class="bi bi-phone-vibrate display-4 text-success"></i>
                             </div>
-                            <h2 class="fw-bold h3 mb-1">Request a Return</h2>
-                            <p class="text-muted small">Please fill out this form to initiate a return request for your delivery.</p>
+                            <h2 class="fw-bold h3 mb-1">Confirm Your Payment</h2>
+                            <p class="text-muted small">Paid via M-Pesa? Submit your transaction details below to verify
+                                your payment status.</p>
                         </div>
 
-                        <div class="alert alert-info border-0 shadow-sm mb-4" role="alert">
-                            <div class="d-flex">
-                                <i class="bi bi-info-circle-fill me-2 fs-5"></i>
-                                <div>
-                                    <strong>Order Reference:</strong> #1024 <br>
-                                    <small class="text-secondary">This request will be sent directly to the seller for verification and processing.</small>
-                                </div>
+                        <div class="p-3 bg-light rounded border mb-4">
+                            <div class="d-flex justify-content-between small text-muted mb-1">
+                                <span>Order Number:</span>
+                                <span class="fw-semibold text-dark">#1024</span>
+                            </div>
+                            <div class="d-flex justify-content-between small text-muted mb-2">
+                                <span>seller:</span>
+                                <span class="fw-semibold text-dark">The Donn</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                                <span class="fw-bold text-dark">Amount Due:</span>
+                                <span class="fw-bold text-success fs-5">KES 2,800</span>
                             </div>
                         </div>
 
-                        <form action="/auth/customer/return_order" method="POST">
-                            
-                            <div class="mb-3">
-                                <label for="return_reason" class="form-label fw-semibold">Reason for Return</label>
-                                <select class="form-select" id="return_reason" name="return_reason" required>
-                                    <option value="" selected disabled>-- Select a reason --</option>
-                                    <option value="wrong_item">Received the wrong item</option>
-                                    <option value="damaged_item">Item arrived damaged / broken</option>
-                                    <option value="poor_quality">Item quality not as expected</option>
-                                    <option value="missing_parts">Parts or items missing from the package</option>
-                                    <option value="other">Other reason (Specify below)</option>
-                                </select>
-                            </div>
-                            <!-- decribe product reason section -->
+                        <form action="/auth/customer/payment_upload" method="POST" enctype="multipart/form-data">
 
-                            <div class="mb-3">
-                                <label for="return_details" class="form-label fw-semibold">Additional Details / Fault Description</label>
-                                <textarea class="form-control" id="return_details" name="return_details" rows="4" placeholder="Please describe the issue in detail to help the seller process your request quickly..." required></textarea>
-                            </div>
-
-                            <!-- upload a picture-->
                             <div class="mb-4">
-                                <label for="payment_screenshot" class="form-label fw-semibold">Upload a picture
+                                <label for="payment_screenshot" class="form-label fw-semibold">Upload Payment
                                     Screenshot</label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-light text-muted"><i
@@ -90,54 +80,48 @@
                                         name="payment_screenshot" accept="image/*" required>
                                 </div>
                                 <div class="form-text small text-muted">
-                                    Upload a clear picure of the item/product.
+                                    Upload a clear screenshot of your M-Pesa confirmation message.
                                 </div>
                             </div>
 
-                            <!-- check box -->
-                            <!-- 2.5 Payment Status Selection (Radio Buttons) -->
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">Payment Status</label>
-                                <div class="p-3 bg-light rounded border">
-                                    
-                                    <!-- Option A: Already Paid -->
-                                    <div class="form-check mb-2">
-                                        <input class="form-check-input" type="radio" name="payment_status" id="status_paid" value="paid" checked onclick="toggleRefundPhone(true)">
-                                        <label class="form-check-label fw-medium text-success" for="status_paid">
-                                            <i class="bi bi-cash-coin me-1"></i> I have already paid for this order
-                                        </label>
-                                    </div>
-
-                                    <!-- Option B: Not Paid -->
-                                    <div class="form-check mb-0">
-                                        <input class="form-check-input" type="radio" name="payment_status" id="status_not_paid" value="not_paid" onclick="toggleRefundPhone(false)">
-                                        <label class="form-check-label fw-medium text-muted" for="status_not_paid">
-                                            <i class="bi bi-x-circle me-1"></i> I have not paid / Cash on Delivery item
-                                        </label>
-                                    </div>
-                            
+                            <div class="alert alert-warning border-0 shadow-sm d-flex align-items-center mb-4"
+                                role="alert">
+                                <i class="bi bi-hourglass-split me-2 fs-5"></i>
+                                <div>
+                                    <strong>Verification Required:</strong> After submission, your status will show as
+                                    <em>Pending</em> until the seller manually reviews and approves the screenshot
+                                    record.
                                 </div>
                             </div>
 
                             <div class="mb-4">
-                                <label for="refund_phone" class="form-label fw-semibold">Refund M-Pesa Mobile Number</label>
+                                <label for="payment_phone" class="form-label fw-semibold">M-Pesa Phone Number</label>
                                 <div class="input-group">
-                                    <span class="input-group-text bg-light text-muted"><i class="bi bi-phone"></i></span>
-                                    <input type="tel" class="form-control" id="refund_phone" name="refund_phone" placeholder="e.g., 0712345678" required>
+                                    <span class="input-group-text bg-light text-muted"><i
+                                            class="bi bi-telephone"></i></span>
+                                    <input type="tel" class="form-control" id="payment_phone" name="payment_phone"
+                                        placeholder="e.g., 0712345678" required>
                                 </div>
-                                <div class="form-text small text-muted">The Safaricom mobile number where your refund should be sent upon approval.</div>
+                                <div class="form-text small text-muted">The mobile number used to send the payment
+                                    amount.</div>
                             </div>
 
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-danger py-2.5 fw-bold shadow-sm">
-                                    <i class="bi bi-send me-2"></i> Submit Return Request
+                                <button type="submit" class="btn btn-success py-2.5 fw-bold shadow-sm">
+                                    <i class="bi bi-shield-check me-2"></i> Submit Verification Request
                                 </button>
-                                <a href="/auth/customer/order_details" class="btn btn-light py-2 text-muted fw-semibold">Cancel</a>
+                                <a href="/auth/customer/order_details"
+                                    class="btn btn-light py-2 text-muted fw-semibold">Cancel</a>
                             </div>
-                            
+
                         </form>
 
                     </div>
+                </div>
+
+                <div class="text-center mt-4 text-muted small px-3">
+                    <p><i class="bi bi-info-circle me-1"></i> Once submitted, the merchant will crosscheck the code
+                        against their payments record ledger to mark your delivery as fully cleared.</p>
                 </div>
 
             </div>
@@ -203,7 +187,13 @@
         </div>
     </footer>
 
+    <script>
+        document.getElementById('mpesa_code').addEventListener('input', function (e) {
+            this.value = this.value.toUpperCase();
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

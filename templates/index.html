@@ -7,6 +7,7 @@
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             background-color: #f8f9fa;
@@ -17,12 +18,23 @@
 
         main {
             flex: 1 0 auto;
-            /* This forces the main content to take up all available space, pushing the footer down */
+
         }
 
         .role-card {
             transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #ffc107;
+        }
+
+        .icon_checker {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
         }
 
         .role-card:hover {
@@ -33,18 +45,136 @@
 </head>
 
 <body>
+    <!-- <div>
+        <button type="button" onclick="document.getElementById('body').style.backgroundColor='black'">dark</button>
+    </div> -->
 
     <header class="bg-primary text-white text-center py-5 mb-5 shadow-sm">
         <div class="container">
-            <h1 class="display-4 fw-bold">MJ-Delivery App</h1>
+            <h1 class="display-4 fw-bold"><i
+                    class="fa-solid fa-motorcycle me-2 text-warning"></i>M<span>J</span>-Delivery App</h1>
             <p class="lead mb-0">Connecting local sellers, riders, and customers seamlessly.</p>
         </div>
     </header>
+    <!-- Hero Showcase Section -->
+    <header class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Be Your Own Boss.</h1>
+            <p class="lead mb-4 mx-auto style='max-width: 700px;'">
+                Join Nairobi's high-efficiency fulfillment network. Turn your motorcycle, bussines, bicycle, or vehicle
+                into an
+                active income generator using our delivery app.
+            </p>
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                <a href="/rider/login" class="btn btn-warning btn-lg px-4 gap-3 fw-bold text-dark">Start Riding
+                    Today</a>
+                <a href="#portals" class="btn btn-outline-primary btn-lg px-4">Other Portals</a>
+            </div>
+        </div>
+    </header>
+<!-- why choose mj delivery app section -->
+    <section id="features" class="py-5 bg-body-secondary mt-3">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Why choose MJDelivery?</h2>
+                <div class="mx-auto bg-warning mb-3" style="height: 4px; width: 60px;"></div>
+                <p class="text-muted">We provide the structure, order consistency, and flexibility you need to maximize
+                    your payouts.</p>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded shadow-sm h-100 border-0">
+                        <div class="feature-icon mb-3"><i class="fa-solid fa-truck-fast"></i></div>
+                        <h4 class="fw-bold fs-5">Fast & Convenient</h4>
 
-    <main class="container py-4">
+                        <div class="icon_checker text-muted small">
+                            <!-- Line 1 -->
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fa-solid fa-check me-2" style="color: rgb(177, 151, 252);"></i>
+                                <span>Unmarked packaging, total privacy.</span>
+                            </div>
+
+                            <!-- Line 2 -->
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fa-solid fa-check me-2" style="color: rgb(177, 151, 252);"></i>
+                                <span>100% private packaging.</span>
+                            </div>
+
+                            <!-- Line 3 -->
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fa-solid fa-check me-2" style="color: rgb(177, 151, 252);"></i>
+                                <span>Your business stays your business.</span>
+                            </div>
+
+                            <!-- Line 4 -->
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-check me-2" style="color: rgb(177, 151, 252);"></i>
+                                <span>Discreet drop-offs, every time.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded shadow-sm h-100 border-0">
+                        <div class="feature-icon mb-3"><i class="fa-solid fa-check"></i></div>
+                        <h4 class="fw-bold fs-5">Safe & Trusted</h4>
+
+                        <div class="icon_checker text-muted small">
+
+                            <!-- Line 1 -->
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fa-solid fa-check me-2" style="color: rgb(177, 151, 252);"></i>
+                                <span>Top-shelf brands, vetted for quality.</span>
+                            </div>
+
+                            <!-- Line 2 -->
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fa-solid fa-check me-2" style="color: rgb(177, 151, 252);"></i>
+                                <span>Curated selection, premium standards.</span>
+                            </div>
+
+                            <!-- Line 3 -->
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-check me-2" style="color: rgb(177, 151, 252);"></i>
+                                <span>Lab-tested products you can trust.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 bg-white rounded shadow-sm h-100 border-0">
+                        <div class="feature-icon mb-3"><i class="fa-solid fa-handshake"></i></div>
+                        <h4 class="fw-bold fs-5">💵 Fair Pricing & Deals</h4>
+
+                        <div class="icon_checker text-muted small">
+                            <!-- Line 1 -->
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fa-solid fa-check me-2" style="color: rgb(177, 151, 252);"></i>
+                                <span>Dispensary prices without the drive.</span>
+                            </div>
+
+                            <!-- Line 2 -->
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fa-solid fa-check me-2" style="color: rgb(177, 151, 252);"></i>
+                                <span>Best local rates, guaranteed.</span>
+                            </div>
+
+                            <!-- Line 3 -->
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fa-solid fa-check me-2" style="color: rgb(177, 151, 252);"></i>
+                                <span>Exclusive in-app deals daily.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- portals -->
+    <main class="container py-4" id="portals">
         <div class="text-center mb-5">
-            <h2 class="fw-semibold">Please select your portal to continue</h2>
-            <p class="text-muted">Choose how you want to interact with our delivery network today.</p>
+            <h2 class="fw-bold">Unified App Ecosystem</h2>
+            <p class="text-muted">Navigate seamlessly to your specific portal below.</p>
         </div>
 
         <div class="row g-4 justify-content-center">
@@ -61,7 +191,7 @@
                             <p class="card-text text-muted">Manage your online shops, request new deliveries, track sent
                                 packages, and verify customer payments.</p>
                         </div>
-                        <a href="{{ url_for('seller_login') }}" class="btn btn-primary w-100 mt-4 py-2 fw-semibold">Enter
+                        <a href="{{ url_for('seller_home') }}" class="btn btn-primary w-100 mt-4 py-2 fw-semibold">Enter
                             Merchant
                             Portal</a>
                     </div>
@@ -79,7 +209,7 @@
                             <p class="card-text text-muted">Toggle your availability, find pending deliveries around
                                 Nairobi, manage active trips, and get paid.</p>
                         </div>
-                        <a href="" class="btn btn-success w-100 mt-4 py-2 fw-semibold">Enter
+                        <a href="{{ url_for('rider_dashboard') }}" class="btn btn-success w-100 mt-4 py-2 fw-semibold">Enter
                             Rider
                             Portal</a>
                     </div>
@@ -97,14 +227,14 @@
                             <p class="card-text text-muted">Expecting a delivery? Enter your phone number and tracking
                                 ID to watch live status logs or upload M-Pesa codes.</p>
                         </div>
-                        <a href="" class="btn btn-warning w-100 mt-4 py-2 fw-semibold text-dark">Track Your Order</a>
+                        <a href="{{ url_for('customer_dashboard') }}" class="btn btn-warning w-100 mt-4 py-2 fw-semibold text-dark">Track Your Order</a>
                     </div>
                 </div>
             </div>
 
         </div>
     </main>
-
+<!-- footer -->
 
     <footer class="bg-primary text-white text-center py-4 mt-auto">
         <div class="container small">
