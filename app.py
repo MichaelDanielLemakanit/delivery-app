@@ -64,5 +64,4 @@ def rider_pages(page_name):
 
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+app = app
