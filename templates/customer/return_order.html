@@ -30,7 +30,7 @@
 
     <nav class="navbar navbar-light bg-warning shadow-sm">
         <div class="container">
-            <a class="btn btn-sm fw-semibold" href="dashboard.html">
+            <a class="btn btn-sm fw-semibold" href="{{url_for('customer_pages',page_name='dashboard')}}">
                 <i class=" bi bi-arrow-left me-1"></i> Exit
             </a>
             <span class="navbar-brand mb-0 h1 fs-6 text-muted">MJ-Delivery App</span>
@@ -145,13 +145,12 @@
                             </div>
 
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-danger py-2.5 fw-bold shadow-sm">
+                                <button id="pop" type="submit" class="btn btn-danger py-2.5 fw-bold shadow-sm">
                                     <i class="bi bi-send me-2"></i> Submit Return Request
                                 </button>
-                                <a href="/auth/customer/order_details"
+                                <a href="{{url_for('customer_pages',page_name='dashboard')}}"
                                     class="btn btn-light py-2 text-muted fw-semibold">Cancel</a>
                             </div>
-
                         </form>
 
                     </div>
@@ -230,6 +229,24 @@
                 phoneInput.closest('.mb-4').style.display = 'none';
             }
         }
+        document.addEventListener("DOMContentLoaded", function () {
+            const returnBtn = document.getElementById('pop');
+
+            if (returnBtn) {
+                returnBtn.addEventListener('click', function (event) {
+                    event.preventDefault(); // Stop immediate submission
+
+                    const isConfirmed = confirm("Are you sure you want to submit this return request? Please ensure all details are correct.");
+
+                    if (isConfirmed) {
+                        // Submit form to Flask server
+                        event.target.closest('form').submit();
+                        window.location.href = "{{url_for('customer_pages',page_name='dashboard')}}"; // Redirect to dashboard after submission
+
+                    }
+                });
+            }
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

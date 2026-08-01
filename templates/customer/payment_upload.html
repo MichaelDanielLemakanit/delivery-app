@@ -30,7 +30,7 @@
 
     <nav class="navbar navbar-light bg-warning shadow-sm">
         <div class="container">
-            <a class="btn btn-sm fw-semibold" href="dashboard.html">
+            <a class="btn btn-sm fw-semibold" href="{{url_for('customer_pages',page_name='dashboard')}}">
                 <i class=" bi bi-arrow-left me-1"></i> Exit
             </a>
             <span class="navbar-brand mb-0 h1 fs-6 text-muted">MJ-Delivery App</span>
@@ -110,7 +110,7 @@
                                 <button type="submit" class="btn btn-success py-2.5 fw-bold shadow-sm">
                                     <i class="bi bi-shield-check me-2"></i> Submit Verification Request
                                 </button>
-                                <a href="/auth/customer/order_details"
+                                <a href="{{url_for('customer_pages',page_name='dashboard')}}"
                                     class="btn btn-light py-2 text-muted fw-semibold">Cancel</a>
                             </div>
 

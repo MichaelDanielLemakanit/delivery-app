@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,22 +14,26 @@
             display: flex;
             flex-direction: column;
         }
+
         main {
             flex: 1 0 auto;
         }
+
         .dashboard-card {
             border-radius: 12px;
             border: none;
         }
     </style>
 </head>
+
 <body>
 
     <!-- Matching Navbar Structure -->
     <nav class="navbar navbar-dark bg-primary shadow-sm">
         <div class="container">
             <div>
-                <a class="btn btn-outline-light btn-sm fw-semibold" href="home.html"><i class="bi bi-shop me-2"></i>home</a>
+                <a class="btn btn-outline-light btn-sm fw-semibold"
+                    href="{{ url_for('seller_pages', page_name='home') }}"><i class="bi bi-shop me-2"></i>Home</a>
             </div>
             <div class="d-flex align-items-center gap-3">
                 <span class="text-white-50 small d-none d-sm-inline">Merchant Console</span>
@@ -43,12 +48,14 @@
         <div class="mb-4">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-1 small">
-                    <li class="breadcrumb-item"><a href="dashboard.html" class="text-decoration-none">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{url_for('seller_pages', page_name = 'dashboard')}}"
+                            class="text-decoration-none">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">New Dispatch</li>
                 </ol>
             </nav>
             <h2 class="fw-bold mb-1 text-dark">Book Delivery Route</h2>
-            <p class="text-muted">Fill out the package details and recipient logistics info to register an immediate transporter run.</p>
+            <p class="text-muted">Fill out the package details and recipient logistics info to register an immediate
+                transporter run.</p>
         </div>
 
         <div class="row g-4">
@@ -56,19 +63,24 @@
             <div class="col-lg-8">
                 <div class="card shadow-sm dashboard-card p-4 bg-body-secondary">
                     <form id="newDeliveryForm" onsubmit="handleFormSubmit(event)">
-                        
+
                         <!-- Section 1: Customer Info -->
-                        <h5 class="fw-bold text-primary mb-3"><i class="bi bi-person-bounding-box me-2"></i>Recipient Information</h5>
+                        <h5 class="fw-bold text-primary mb-3"><i class="bi bi-person-bounding-box me-2"></i>Recipient
+                            Information</h5>
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
-                                <label for="customerName" class="form-label small fw-semibold text-muted">Customer Name</label>
-                                <input type="text" class="form-control" id="customerName" placeholder="e.g. Daniel Michael" required>
+                                <label for="customerName" class="form-label small fw-semibold text-muted">Customer
+                                    Name</label>
+                                <input type="text" class="form-control" id="customerName"
+                                    placeholder="e.g. Daniel Michael" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="customerPhone" class="form-label small fw-semibold text-muted">Phone Number</label>
+                                <label for="customerPhone" class="form-label small fw-semibold text-muted">Phone
+                                    Number</label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-light text-muted small">+254</span>
-                                    <input type="tel" class="form-control" id="customerPhone" placeholder="712345678" pattern="[0-9]{9}" required>
+                                    <input type="tel" class="form-control" id="customerPhone" placeholder="712345678"
+                                        pattern="[0-9]{9}" required>
                                 </div>
                             </div>
                         </div>
@@ -76,21 +88,28 @@
                         <hr class="my-4 text-muted opacity-25">
 
                         <!-- Section 2: Consignment Details -->
-                        <h5 class="fw-bold text-primary mb-3"><i class="bi bi-box-seam me-2"></i>Package Manifest Details</h5>
+                        <h5 class="fw-bold text-primary mb-3"><i class="bi bi-box-seam me-2"></i>Package Manifest
+                            Details</h5>
                         <div class="row g-3 mb-4">
                             <div class="col-12">
-                                <label for="itemDescription" class="form-label small fw-semibold text-muted">Item Description & SKUs</label>
-                                <textarea class="form-control" id="itemDescription" rows="2" placeholder="e.g. 1x Premium Casual Fit Cotton T-Shirt, 2x Custom Jackets" required></textarea>
+                                <label for="itemDescription" class="form-label small fw-semibold text-muted">Item
+                                    Description & SKUs</label>
+                                <textarea class="form-control" id="itemDescription" rows="2"
+                                    placeholder="e.g. 1x Premium Casual Fit Cotton T-Shirt, 2x Custom Jackets"
+                                    required></textarea>
                             </div>
                             <div class="col-md-6">
-                                <label for="packageValue" class="form-label small fw-semibold text-muted">Declared Items Value</label>
+                                <label for="packageValue" class="form-label small fw-semibold text-muted">Declared Items
+                                    Value</label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-light text-muted small">KES</span>
-                                    <input type="number" class="form-control" id="packageValue" placeholder="6200" required>
+                                    <input type="number" class="form-control" id="packageValue" placeholder="6200"
+                                        required>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="paymentMethod" class="form-label small fw-semibold text-muted">Collection Settlement Mode</label>
+                                <label for="paymentMethod" class="form-label small fw-semibold text-muted">Collection
+                                    Settlement Mode</label>
                                 <select class="form-select" id="paymentMethod" required>
                                     <option value="" disabled selected>Select option...</option>
                                     <option value="mpesa_prepaid">M-Pesa Prepaid (Delivery Only)</option>
@@ -106,19 +125,26 @@
                         <h5 class="fw-bold text-primary mb-3"><i class="bi bi-geo-alt me-2"></i>Drop-off Location</h5>
                         <div class="row g-3 mb-4">
                             <div class="col-md-8">
-                                <label for="deliveryArea" class="form-label small fw-semibold text-muted">Destination Area Zone</label>
-                                <select class="form-select" id="deliveryArea" onchange="calculateLogisticsFare()" required>
+                                <label for="deliveryArea" class="form-label small fw-semibold text-muted">Destination
+                                    Area Zone</label>
+                                <select class="form-select" id="deliveryArea" onchange="calculateLogisticsFare()"
+                                    required>
                                     <option value="" disabled selected>Choose a delivery zone...</option>
-                                    <option value="ngong_road" data-fare="300">Ngong Road Area / Kilimani (KES 300)</option>
+                                    <option value="ngong_road" data-fare="300">Ngong Road Area / Kilimani (KES 300)
+                                    </option>
                                     <option value="cbd" data-fare="200">Nairobi CBD (KES 200)</option>
-                                    <option value="utawala" data-fare="400">Utawala / Fedha / Embakasi (KES 400)</option>
-                                    <option value="westlands" data-fare="300">Westlands Commercial Core (KES 300)</option>
+                                    <option value="utawala" data-fare="400">Utawala / Fedha / Embakasi (KES 400)
+                                    </option>
+                                    <option value="westlands" data-fare="300">Westlands Commercial Core (KES 300)
+                                    </option>
                                     <option value="karen" data-fare="450">Karen Plains Zone (KES 450)</option>
                                 </select>
                             </div>
                             <div class="col-12">
-                                <label for="specificAddress" class="form-label small fw-semibold text-muted">Specific House/Building & Landmark Details</label>
-                                <input type="text" class="form-control" id="specificAddress" placeholder="e.g. House 4B, Plaza Apartments near Gate B" required>
+                                <label for="specificAddress" class="form-label small fw-semibold text-muted">Specific
+                                    House/Building & Landmark Details</label>
+                                <input type="text" class="form-control" id="specificAddress"
+                                    placeholder="e.g. House 4B, Plaza Apartments near Gate B" required>
                             </div>
                         </div>
 
@@ -135,10 +161,11 @@
 
             <!-- Right Column: Live Pricing Sidebar Summary -->
             <div class="col-lg-4">
-                <div class="card shadow-sm dashboard-card p-4 bg-body-secondary text-center mb-4 sticky-top" style="top: 24px; z-index: 1;">
+                <div class="card shadow-sm dashboard-card p-4 bg-body-secondary text-center mb-4 sticky-top"
+                    style="top: 24px; z-index: 1;">
                     <span class="text-muted small d-block mb-1">Live Order Run Valuation</span>
                     <hr class="my-2">
-                    
+
                     <div class="py-3">
                         <span class="text-muted small d-block">Logistics Runner Fee</span>
                         <h2 class="fw-bold text-success my-1" id="displayFare">KES --</h2>
@@ -161,7 +188,8 @@
 
                     <div class="alert alert-warning border-0 small text-start mt-3 mb-0 d-flex gap-2">
                         <i class="bi bi-exclamation-triangle-fill text-warning fs-5"></i>
-                        <span>Once dispatched, nearby live active riders matching your node clusters will instantly receive tracking alerts.</span>
+                        <span>Once dispatched, nearby live active riders matching your node clusters will instantly
+                            receive tracking alerts.</span>
                     </div>
                 </div>
             </div>
@@ -235,11 +263,11 @@
         function calculateLogisticsFare() {
             const select = document.getElementById('deliveryArea');
             const selectedOption = select.options[select.selectedIndex];
-            
+
             if (selectedOption && !selectedOption.disabled) {
                 const fare = selectedOption.getAttribute('data-fare');
                 const zoneText = selectedOption.text.split(' (')[0];
-                
+
                 document.getElementById('displayFare').textContent = "KES " + fare;
                 document.getElementById('displayTarget').textContent = zoneText;
             }
@@ -251,10 +279,11 @@
             const fareValue = document.getElementById('displayFare').textContent;
 
             alert("Logistics ticket registered successfully!\n\nOrder for " + customerName + " has been assigned to the network pool with an estimated fare payout of " + fareValue + ". Check your dashboard to view transporter allocation.");
-            window.location.href = "/dashboard.html";
+            window.location.href = "{{url_for('seller_pages', page_name = 'dashboard')}}";  // Redirect to dashboard after submission
         }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

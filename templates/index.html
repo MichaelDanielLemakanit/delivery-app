@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <link rel="icon" type="image/x-icon" href="static/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -72,7 +73,7 @@
             </div>
         </div>
     </header>
-<!-- why choose mj delivery app section -->
+    <!-- why choose mj delivery app section -->
     <section id="features" class="py-5 bg-body-secondary mt-3">
         <div class="container">
             <div class="text-center mb-5">
@@ -191,7 +192,8 @@
                             <p class="card-text text-muted">Manage your online shops, request new deliveries, track sent
                                 packages, and verify customer payments.</p>
                         </div>
-                        <a href="{{ url_for('seller_home') }}" class="btn btn-primary w-100 mt-4 py-2 fw-semibold">Enter
+                        <a href="{{ url_for('seller_pages', page_name='home') }}"
+                            class="btn btn-primary w-100 mt-4 py-2 fw-semibold">Enter
                             Merchant
                             Portal</a>
                     </div>
@@ -209,7 +211,8 @@
                             <p class="card-text text-muted">Toggle your availability, find pending deliveries around
                                 Nairobi, manage active trips, and get paid.</p>
                         </div>
-                        <a href="{{ url_for('rider_dashboard') }}" class="btn btn-success w-100 mt-4 py-2 fw-semibold">Enter
+                        <a href="{{ url_for('rider_pages', page_name='login') }}"
+                            class="btn btn-success w-100 mt-4 py-2 fw-semibold">Enter
                             Rider
                             Portal</a>
                     </div>
@@ -227,14 +230,15 @@
                             <p class="card-text text-muted">Expecting a delivery? Enter your phone number and tracking
                                 ID to watch live status logs or upload M-Pesa codes.</p>
                         </div>
-                        <a href="{{ url_for('customer_dashboard') }}" class="btn btn-warning w-100 mt-4 py-2 fw-semibold text-dark">Track Your Order</a>
+                        <a href="{{ url_for('customer_pages', page_name='dashboard') }}"
+                            class="btn btn-warning w-100 mt-4 py-2 fw-semibold text-dark">Track Your Order</a>
                     </div>
                 </div>
             </div>
 
         </div>
     </main>
-<!-- footer -->
+    <!-- footer -->
 
     <footer class="bg-primary text-white text-center py-4 mt-auto">
         <div class="container small">

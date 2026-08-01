@@ -54,7 +54,8 @@
             <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
                 aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel" fw-bold><strong>Main menu</strong></h5>
+                    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel" fw-bold><strong>Main menu</strong>
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -63,22 +64,22 @@
                     <!-- button -->
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('seller_home', page_name = '')}}">
+                            <a class="nav-link" href="{{url_for('seller_pages', page_name = 'dashboard')}}">
                                 <i class="fa-solid fa-cart-shopping me-2"></i> Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="delivery_details.html">
+                            <a class="nav-link" href="{{url_for('seller_pages', page_name = 'delivery-details')}}">
                                 <i class="fa-solid fa-clock-rotate-left me-2"></i> Delivery Details
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="new_delivery.html">
+                            <a class="nav-link" href="{{url_for('seller_pages', page_name = 'new-delivery')}}">
                                 <i class="fa-solid fa-cart-shopping me-2"></i> New Deliveries
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ url_for('seller_pages', page_name='home') }}">
                                 <i class="fa-solid fa-user me-2"></i> My Profile
                             </a>
                         </li>
@@ -96,7 +97,7 @@
                 </i><a href=""></a>
             </span>
             <div class="d-flex align-items-center gap-3">
-                <a class="btn btn-light btn-sm fw-bold px-3 text-primary" href="#track-orders">
+                <a class="btn btn-light btn-sm fw-bold px-3 text-primary" href="{{url_for('seller_pages', page_name='delivery-details')}}">
                     <i class="bi bi-box-seam me-1"></i> Track Orders
                 </a>
                 <a class="btn btn-outline-light btn-sm fw-semibold" href="/">Logout</a>
