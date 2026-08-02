@@ -62,6 +62,5 @@ def rider_pages(page_name):
     abort(404)
                                                         
 
-
-
-app = app
+if __name__ == "__main__":
+    app.run(debug=True)

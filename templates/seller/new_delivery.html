@@ -29,7 +29,7 @@
 <body>
 
     <!-- Matching Navbar Structure -->
-    <nav class="navbar navbar-dark bg-primary shadow-sm">
+    <nav class="navbar navbar-dark bg-warning shadow-sm">
         <div class="container">
             <div>
                 <a class="btn btn-outline-light btn-sm fw-semibold"
@@ -49,7 +49,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-1 small">
                     <li class="breadcrumb-item"><a href="{{url_for('seller_pages', page_name = 'dashboard')}}"
-                            class="text-decoration-none">Dashboard</a></li>
+                            class="text-decoration-none text-warning">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">New Dispatch</li>
                 </ol>
             </nav>
@@ -65,7 +65,7 @@
                     <form id="newDeliveryForm" onsubmit="handleFormSubmit(event)">
 
                         <!-- Section 1: Customer Info -->
-                        <h5 class="fw-bold text-primary mb-3"><i class="bi bi-person-bounding-box me-2"></i>Recipient
+                        <h5 class="fw-bold text-black mb-3"><i class="bi bi-person-bounding-box me-2"></i>Recipient
                             Information</h5>
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
@@ -88,7 +88,7 @@
                         <hr class="my-4 text-muted opacity-25">
 
                         <!-- Section 2: Consignment Details -->
-                        <h5 class="fw-bold text-primary mb-3"><i class="bi bi-box-seam me-2"></i>Package Manifest
+                        <h5 class="fw-bold text-black mb-3"><i class="bi bi-box-seam me-2"></i>Package Manifest
                             Details</h5>
                         <div class="row g-3 mb-4">
                             <div class="col-12">
@@ -122,7 +122,7 @@
                         <hr class="my-4 text-muted opacity-25">
 
                         <!-- Section 3: Routing Destinations -->
-                        <h5 class="fw-bold text-primary mb-3"><i class="bi bi-geo-alt me-2"></i>Drop-off Location</h5>
+                        <h5 class="fw-bold text-black mb-3"><i class="bi bi-geo-alt me-2"></i>Drop-off Location</h5>
                         <div class="row g-3 mb-4">
                             <div class="col-md-8">
                                 <label for="deliveryArea" class="form-label small fw-semibold text-muted">Destination
@@ -150,7 +150,7 @@
 
                         <!-- Submit Button -->
                         <div class="d-grid mt-4">
-                            <button type="submit" class="btn btn-primary btn-lg fw-bold py-2.5 fs-6 shadow-sm">
+                            <button type="submit" class="btn btn-warning btn-lg fw-bold py-2.5 fs-6 shadow-sm">
                                 <i class="bi bi-send-check-fill me-2"></i> Dispatch Logistics Request
                             </button>
                         </div>
@@ -182,7 +182,7 @@
                         </div>
                         <div class="d-flex justify-content-between small">
                             <span class="text-muted">Logistics Priority:</span>
-                            <span class="badge bg-primary-subtle text-primary fw-bold">Instant Dispatch</span>
+                            <span class="badge bg-warning-subtle text-warning fw-bold">Instant Dispatch</span>
                         </div>
                     </div>
 
@@ -198,7 +198,7 @@
     </main>
 
     <!-- Matching Footer -->
-    <footer class="bg-primary text-white text-center py-4 mt-auto">
+    <footer class="bg-warning text-white text-center py-4 mt-auto">
         <div class="container small">
             <!-- Social & Contact Links -->
             <div class="mb-3">

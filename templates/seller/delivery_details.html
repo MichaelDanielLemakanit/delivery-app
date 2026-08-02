@@ -68,7 +68,7 @@
 <body>
 
     <!-- Matching Navbar Structure -->
-    <nav class="navbar navbar-dark bg-primary shadow-sm">
+    <nav class="navbar navbar-dark bg-warning shadow-sm">
         <div class="container">
             <div>
                 <a class="btn btn-outline-light btn-sm fw-semibold"
@@ -89,7 +89,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-1 small">
                         <li class="breadcrumb-item"><a href="{{ url_for('seller_pages', page_name='dashboard') }}"
-                                class="text-decoration-none">Dashboard</a>
+                                class="text-decoration-none text-warning">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Order #1024</li>
                     </ol>
@@ -123,7 +123,7 @@
                         </div>
                         <div class="text-md-end">
                             <span class="text-muted small d-block">Estimated Fulfillment Time</span>
-                            <strong class="text-dark d-block mt-1"><i class="bi bi-clock me-1 text-primary"></i> Within
+                            <strong class="text-dark d-block mt-1"><i class="bi bi-clock me-1 text-warning"></i> Within
                                 25 Mins</strong>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
 
                 <!-- Package Details Summary -->
                 <div class="card shadow-sm dashboard-card p-4 bg-white mb-4">
-                    <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-card-list text-primary me-2"></i>Manifest
+                    <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-card-list text-warning me-2"></i>Manifest
                         Consignment</h5>
 
                     <div class="table-responsive">
@@ -171,11 +171,11 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3" class="text-end text-muted small">Logistics Delivery Fee:</td>
-                                    <td class="text-end fw-bold text-success">KES 300</td>
+                                    <td class="text-end fw-bold text-warning">KES 300</td>
                                 </tr>
                                 <tr class="table-light fs-5">
                                     <td colspan="3" class="text-end fw-bold text-dark">Total Gross Value:</td>
-                                    <td class="text-end fw-bold text-primary">KES 6,500</td>
+                                    <td class="text-end fw-bold text-warning">KES 6,500</td>
                                 </tr>
 
                             </tfoot>
@@ -183,7 +183,7 @@
                         </table>
                         <!-- customers datails -->
                         <table class="table align-middle">
-                            <thead class="table-primary small text-muted">
+                            <thead class="table-warning small text-muted">
                                 <tr>
                                     <th>CUSTOMER NAME:</th>
                                     <th class="text-center">STATUS</th>
@@ -198,7 +198,7 @@
                                         <small class="text-muted d-block">Phone: +254 725 667185</small>
                                     </td>
                                     <td class="text-center"><span
-                                            class="badge bg-success text-white status-badge rounded-pill fw-bold mt-1">Paid</span></td>
+                                            class="badge bg-warning text-white status-badge rounded-pill fw-bold mt-1">Paid</span></td>
                                     <td class="text-end fw-semibold text-dark">KES 0</td>
                                     <td class="text-end fw-semibold text-dark">MJ-Brand</td>
                                 </tr>
@@ -208,13 +208,13 @@
 
                 <!-- Routing & Delivery Nodes -->
                 <div class="card shadow-sm dashboard-card p-4 bg-white">
-                    <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-geo-alt text-primary me-2"></i>Fulfillment
+                    <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-geo-alt text-warning me-2"></i>Fulfillment
                         Endpoints</h5>
 
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="p-3 bg-light rounded border h-100">
-                                <span class="text-muted small d-block mb-1"><i class="bi bi-shop text-primary me-1"></i>
+                                <span class="text-muted small d-block mb-1"><i class="bi bi-shop text-warning me-1"></i>
                                     Origin Dispatch Depot</span>
                                 <span class="fw-bold d-block text-dark">The Donn Shop</span>
                                 <span class="text-muted small">Ngong Road Cluster Center, Nairobi</span>
@@ -223,7 +223,7 @@
                         <div class="col-md-6">
                             <div class="p-3 bg-light rounded border h-100">
                                 <span class="text-muted small d-block mb-1"><i
-                                        class="bi bi-person-fill text-danger me-1"></i> Recipient Consignee</span>
+                                        class="bi bi-person-fill text-warning me-1"></i> Recipient Consignee</span>
                                 <span class="fw-bold d-block text-dark">Jacobeth Atsali</span>
                                 <span class="text-muted small">Tralledia AppartmentHouse G4, Mombasa Road Utawala Area,
                                     Nairobi</span>
@@ -233,13 +233,13 @@
                 </div>
 
                 <div class="card shadow-sm dashboard-card mt-2 p-4 bg-white">
-                    <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-geo-alt text-primary me-2"></i>Fulfillment
+                    <h5 class="fw-bold mb-3 text-dark"><i class="bi bi-geo-alt text-warning me-2"></i>Fulfillment
                         Endpoints</h5>
 
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="p-3 bg-light rounded border h-100">
-                                <span class="text-muted small d-block mb-1"><i class="bi bi-shop text-primary me-1"></i>
+                                <span class="text-muted small d-block mb-1"><i class="bi bi-shop text-warning me-1"></i>
                                     Origin Dispatch Depot</span>
                                 <span class="fw-bold d-block text-dark">The Donn Shop</span>
                                 <span class="text-muted small">Ngong Road Cluster Center, Nairobi</span>
@@ -248,7 +248,7 @@
                         <div class="col-md-6">
                             <div class="p-3 bg-light rounded border h-100">
                                 <span class="text-muted small d-block mb-1"><i
-                                        class="bi bi-person-fill text-danger me-1"></i> Recipient Consignee</span>
+                                        class="bi bi-person-fill text-warning me-1"></i> Recipient Consignee</span>
                                 <span class="fw-bold d-block text-dark">Larry Lemakanit</span>
                                 <span class="text-muted small">Cathy Shelter AppartmentHouse P27, Ngong Racecourse Road
                                     Area, Nairobi</span>
@@ -266,7 +266,7 @@
                 <div class="card shadow-sm dashboard-card p-4 bg-white mb-4 text-center">
                     <span class="text-muted small d-block mb-2">Assigned Logistics Agent</span>
 
-                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2 shadow-sm"
+                    <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2 shadow-sm"
                         style="width: 60px; height: 60px;">
                         <i class="bi bi-bicycle fs-2"></i>
                     </div>
@@ -291,13 +291,13 @@
 
                 <!-- Live Milestones Timeline Track -->
                 <div class="card shadow-sm dashboard-card p-4 bg-white">
-                    <h5 class="fw-bold mb-4 text-dark"><i class="bi bi-bezier2 text-primary me-2"></i>Tracking History
+                    <h5 class="fw-bold mb-4 text-dark"><i class="bi bi-bezier2 text-warning me-2"></i>Tracking History
                     </h5>
 
                     <div class="timeline-container">
                         <!-- Step 3 (Current Active Step) -->
                         <div class="timeline-step">
-                            <div class="timeline-icon bg-warning text-dark shadow-sm">
+                            <div class="timeline-icon bg-secondary text-dark shadow-sm">
                                 <i class="bi bi-dot fs-4"></i>
                             </div>
                             <h6 class="fw-bold text-dark mb-0">Dispatched In Transit</h6>
@@ -307,7 +307,7 @@
 
                         <!-- Step 2 -->
                         <div class="timeline-step">
-                            <div class="timeline-icon bg-success text-white shadow-sm">
+                            <div class="timeline-icon bg-secondary text-white shadow-sm">
                                 <i class="bi bi-check-lg small"></i>
                             </div>
                             <h6 class="fw-semibold text-muted mb-0">Consignment Handover Completed</h6>
@@ -335,7 +335,7 @@
     </main>
 
     <!-- Matching Footer -->
-    <footer class="bg-primary text-white text-center py-4 mt-auto">
+    <footer class="bg-warning text-white text-center py-4 mt-auto">
         <div class="container small">
             <!-- Social & Contact Links -->
             <div class="mb-3">

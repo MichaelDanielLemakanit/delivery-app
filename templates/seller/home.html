@@ -45,7 +45,7 @@
 <body>
 
     <!--  Navbar Structure -->
-    <nav class="navbar navbar-dark bg-primary shadow-sm">
+    <nav class="navbar navbar-dark bg-warning shadow-sm">
         <div class="container">
             <!-- side bar -->
             <button class="btn text-light fw-bold" type="button" data-bs-toggle="offcanvas"
@@ -63,23 +63,23 @@
 
                     <!-- button -->
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('seller_pages', page_name = 'dashboard')}}">
-                                <i class="fa-solid fa-cart-shopping me-2"></i> Dashboard
+                        <li class="nav-item ">
+                            <a class="nav-link  text-warning" href="{{url_for('seller_pages', page_name = 'dashboard')}}">
+                                <i class="fa-solid fa-cart-shopping me-2 "></i> Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('seller_pages', page_name = 'delivery-details')}}">
+                            <a class="nav-link  text-warning" href="{{url_for('seller_pages', page_name = 'delivery-details')}}">
                                 <i class="fa-solid fa-clock-rotate-left me-2"></i> Delivery Details
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url_for('seller_pages', page_name = 'new-delivery')}}">
+                            <a class="nav-link  text-warning" href="{{url_for('seller_pages', page_name = 'new-delivery')}}">
                                 <i class="fa-solid fa-cart-shopping me-2"></i> New Deliveries
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('seller_pages', page_name='home') }}">
+                            <a class="nav-link  text-warning" href="{{ url_for('seller_pages', page_name='home') }}">
                                 <i class="fa-solid fa-user me-2"></i> My Profile
                             </a>
                         </li>
@@ -93,11 +93,11 @@
                 </div>
             </div>
 
-            <span class="navbar-brand mb-0 h1 fs-5 fw-bold text-light">
+            <!-- <span class="navbar-brand mb-0 h1 fs-5 fw-bold text-light">
                 </i><a href=""></a>
-            </span>
+            </span> -->
             <div class="d-flex align-items-center gap-3">
-                <a class="btn btn-light btn-sm fw-bold px-3 text-primary" href="{{url_for('seller_pages', page_name='delivery-details')}}">
+                <a class="btn btn-outline-light btn-sm fw-bold px-3 " href="{{url_for('seller_pages', page_name='delivery-details')}}">
                     <i class="bi bi-box-seam me-1"></i> Track Orders
                 </a>
                 <a class="btn btn-outline-light btn-sm fw-semibold" href="/">Logout</a>
@@ -117,12 +117,12 @@
             <div class="col-md-6 d-flex justify-content-md-end align-items-center">
                 <div class="p-3  bg-body-secondary border rounded shadow-sm d-flex align-items-center gap-3 w-100 style-elem"
                     style="max-width: 300px;">
-                    <div class="bg-primary-subtle text-primary rounded p-2 fs-3">
+                    <div class="bg-warning-subtle text-warning rounded p-2 fs-3">
                         <i class="bi bi-cart3"></i>
                     </div>
                     <div>
                         <span class="text-muted small d-block fw-semibold">Active Shopping Basket</span>
-                        <h4 class="fw-bold text-primary mb-0" id="cart-counter">0 Items</h4>
+                        <h4 class="fw-bold text-warning mb-0" id="cart-counter">0 Items</h4>
                     </div>
                 </div>
             </div>
@@ -133,10 +133,10 @@
             <h4 class="fw-bold mb-3 text-dark"><i class="bi bi-shop me-2"></i>Order from Partnered Stores</h4>
             <p class="text-muted small">Select a retail storefront below to browse products and set up a delivery route.
             </p>
-            <div class="btn mb-2">
-                <button type="button" class="btn btn-warning">Edit Store</button>
-                <button type="button" class="btn btn-primary">Add Store</button>
-                <button type="button" class="btn btn-danger">Delete Store</button>
+            <div class="mb-2 d-flex gap-2 justify-content-end">
+                <button type="button" class="btn btn-outline-warning">Edit Store</button>
+                <button type="button" class="btn btn-outline-warning">Add Store</button>
+                <button type="button" class="btn btn-outline-danger">Delete Store</button>
             </div>
 
             <div class="row g-4">
@@ -146,11 +146,11 @@
                         onclick="browseStore('MJ Duos')">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-start mb-3">
-                                <div class="bg-primary-subtle text-primary rounded p-3 fs-3">
+                                <div class="bg-warning-subtle text-warning rounded p-3 fs-3">
                                     <i class="bi bi-printer"></i>
                                 </div>
                                 <div class="form-check form-switch text-black mb-0">
-                                    <input class="form-check-input bg-success border-success" type="checkbox"
+                                    <input class="form-check-input bg-warning border-warning" type="checkbox"
                                         id="sellerStatusToggle" checked onclick="toggleDutyStatus()">
                                     <label class="form-check-label small fw-medium" for="riderStatusToggle"
                                         id="dutyLabel">Active</label>
@@ -163,7 +163,7 @@
                             <div class="d-flex justify-content-between align-items-center pt-2 border-top">
                                 <span class="text-muted small"><i class="bi bi-clock me-1"></i> Delivery: ~35
                                     mins</span>
-                                <span class="text-success fw-bold small">KES 500 base</span>
+                                <span class="text-warning fw-bold small">KES 500 base</span>
                             </div>
                         </div>
                     </div>
@@ -175,11 +175,11 @@
                         onclick="browseStore('MJ Duos')">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-start mb-3">
-                                <div class="bg-primary-subtle text-primary rounded p-3 fs-3">
+                                <div class="bg-warning-subtle text-warning rounded p-3 fs-3">
                                     <i class="bi bi-phone"></i>
                                 </div>
                                 <div class="form-check form-switch text-black mb-0">
-                                    <input class="form-check-input bg-success border-success" type="checkbox"
+                                    <input class="form-check-input bg-warning border-warning" type="checkbox"
                                         id="sellerStatusToggle" checked onclick="toggleDutyStatus()">
                                     <label class="form-check-label small fw-medium" for="riderStatusToggle"
                                         id="dutyLabel">Active</label>
@@ -191,7 +191,7 @@
                             <div class="d-flex justify-content-between align-items-center pt-2 border-top">
                                 <span class="text-muted small"><i class="bi bi-clock me-1"></i> Delivery: ~35
                                     mins</span>
-                                <span class="text-success fw-bold small">KES 400 base</span>
+                                <span class="text-warning fw-bold small">KES 400 base</span>
                             </div>
                         </div>
                     </div>
@@ -203,11 +203,11 @@
                         onclick="browseStore('Cherish & Co')">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-start mb-3">
-                                <div class="bg-primary-subtle text-primary rounded p-3 fs-3">
+                                <div class="bg-warning-subtle text-warning rounded p-3 fs-3">
                                     <i class="bi bi-gift"></i>
                                 </div>
                                 <div class="form-check form-switch text-black mb-0">
-                                    <input class="form-check-input bg-success border-success" type="checkbox"
+                                    <input class="form-check-input bg-warning border-warning" type="checkbox"
                                         id="sellerStatusToggle" checked onclick="toggleDutyStatus()">
                                     <label class="form-check-label small fw-medium" for="riderStatusToggle"
                                         id="dutyLabel">Active</label>
@@ -218,7 +218,7 @@
                             <div class="d-flex justify-content-between align-items-center pt-2 border-top">
                                 <span class="text-muted small"><i class="bi bi-clock me-1"></i> Delivery: ~40
                                     mins</span>
-                                <span class="text-success fw-bold small">KES 250 base</span>
+                                <span class="text-warning fw-bold small">KES 250 base</span>
                             </div>
                         </div>
                     </div>
@@ -244,12 +244,12 @@
                         </div>
                         <div class="text-md-end">
                             <span class="text-muted small d-block">Est. Arrival Time</span>
-                            <span class="fw-bold text-primary fs-5"><i class="bi bi-clock me-1"></i> ~20 Mins</span>
+                            <span class="fw-bold text-warning fs-5"><i class="bi bi-clock me-1"></i> ~20 Mins</span>
                         </div>
                     </div>
 
                     <div class="p-3 bg-light rounded border mb-3">
-                        <div class="small text-muted mb-1"><i class="bi bi-bicycle text-primary me-1"></i> Assigned
+                        <div class="small text-muted mb-1"><i class="bi bi-bicycle text-warning me-1"></i> Assigned
                             Logistics Transporter:</div>
                         <div class="fw-semibold d-flex align-items-center gap-2">
                             Onesmas Barasa
@@ -259,7 +259,7 @@
                     </div>
 
                     <div class="d-grid">
-                        <button class="btn btn-outline-primary py-2 fw-semibold" onclick="viewLiveTracking('1024')">
+                        <button class="btn btn-outline-warning py-2 fw-semibold" onclick="viewLiveTracking('1024')">
                             <i class="bi bi-geo-alt-fill me-1"></i> Open Live Route Tracking Page
                         </button>
                     </div>
@@ -270,7 +270,7 @@
     </main>
 
     <!-- Matching Footer -->
-    <footer class="bg-primary text-white text-center py-4 mt-auto">
+    <footer class="bg-warning text-white text-center py-4 mt-auto">
         <div class="container small">
             <!-- Social & Contact Links -->
             <div class="mb-3">

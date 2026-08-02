@@ -50,10 +50,10 @@
         <button type="button" onclick="document.getElementById('body').style.backgroundColor='black'">dark</button>
     </div> -->
 
-    <header class="bg-primary text-white text-center py-5 mb-5 shadow-sm">
+    <header class="bg-warning text-white text-center py-5 mb-5 shadow-sm">
         <div class="container">
             <h1 class="display-4 fw-bold"><i
-                    class="fa-solid fa-motorcycle me-2 text-warning"></i>M<span>J</span>-Delivery App</h1>
+                    class="fa-solid fa-motorcycle me-2 text-white"></i>M<span>J</span>-Delivery App</h1>
             <p class="lead mb-0">Connecting local sellers, riders, and customers seamlessly.</p>
         </div>
     </header>
@@ -67,9 +67,9 @@
                 active income generator using our delivery app.
             </p>
             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                <a href="/rider/login" class="btn btn-warning btn-lg px-4 gap-3 fw-bold text-dark">Start Riding
+                <a href="{{url_for('rider_pages', page_name = 'register')}}" class="btn btn-warning btn-lg px-4 gap-3 fw-bold text-dark">Start Riding
                     Today</a>
-                <a href="#portals" class="btn btn-outline-primary btn-lg px-4">Other Portals</a>
+                <a href="#portals" class="btn btn-outline-warning btn-lg px-4">Other Portals</a>
             </div>
         </div>
     </header>
@@ -185,7 +185,7 @@
                 <div class="card  bg-body-secondary h-100 text-center border-0 shadow-sm role-card p-4">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div>
-                            <div class="mb-3 text-primary">
+                            <div class="mb-3 text-warning">
                                 <i class="bi bi-shop display-3"></i>
                             </div>
                             <h3 class="card-title h4 fw-bold">Merchant / Seller</h3>
@@ -193,7 +193,7 @@
                                 packages, and verify customer payments.</p>
                         </div>
                         <a href="{{ url_for('seller_pages', page_name='home') }}"
-                            class="btn btn-primary w-100 mt-4 py-2 fw-semibold">Enter
+                            class="btn btn-warning w-100 mt-4 py-2 fw-semibold">Enter
                             Merchant
                             Portal</a>
                     </div>
@@ -204,7 +204,7 @@
                 <div class="card  bg-body-secondary h-100 text-center border-0 shadow-sm role-card p-4">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div>
-                            <div class="mb-3 text-success">
+                            <div class="mb-3 text-warning">
                                 <i class="bi bi-bicycle display-3"></i>
                             </div>
                             <h3 class="card-title h4 fw-bold">Delivery Rider</h3>
@@ -212,7 +212,7 @@
                                 Nairobi, manage active trips, and get paid.</p>
                         </div>
                         <a href="{{ url_for('rider_pages', page_name='login') }}"
-                            class="btn btn-success w-100 mt-4 py-2 fw-semibold">Enter
+                            class="btn btn-warning w-100 mt-4 py-2 fw-semibold">Enter
                             Rider
                             Portal</a>
                     </div>
@@ -240,7 +240,7 @@
     </main>
     <!-- footer -->
 
-    <footer class="bg-primary text-white text-center py-4 mt-auto">
+    <footer class="bg-warning text-white text-center py-4 mt-auto">
         <div class="container small">
             <!-- Social & Contact Links -->
             <div class="mb-3">

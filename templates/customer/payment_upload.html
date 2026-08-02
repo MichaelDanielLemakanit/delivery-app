@@ -28,14 +28,14 @@
 
 <body>
 
-    <nav class="navbar navbar-light bg-warning shadow-sm">
+    <!-- <nav class="navbar navbar-light bg-warning shadow-sm">
         <div class="container">
             <a class="btn btn-sm fw-semibold" href="{{url_for('customer_pages',page_name='dashboard')}}">
                 <i class=" bi bi-arrow-left me-1"></i> Exit
             </a>
             <span class="navbar-brand mb-0 h1 fs-6 text-muted">MJ-Delivery App</span>
         </div>
-    </nav>
+    </nav> -->
 
     <main class="container py-5">
         <div class="row justify-content-center">
@@ -45,8 +45,8 @@
                     <div class="card-body">
 
                         <div class="text-center mb-4">
-                            <div class="text-primary mb-2">
-                                <i class="bi bi-phone-vibrate display-4 text-success"></i>
+                            <div class="mb-2">
+                                <i class="bi bi-phone-vibrate display-4 text-dark"></i>
                             </div>
                             <h2 class="fw-bold h3 mb-1">Confirm Your Payment</h2>
                             <p class="text-muted small">Paid via M-Pesa? Submit your transaction details below to verify
@@ -64,7 +64,7 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center pt-2 border-top">
                                 <span class="fw-bold text-dark">Amount Due:</span>
-                                <span class="fw-bold text-success fs-5">KES 2,800</span>
+                                <span class="fw-bold text-warning fs-5">KES 2,800</span>
                             </div>
                         </div>
 
@@ -107,7 +107,7 @@
                             </div>
 
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-success py-2.5 fw-bold shadow-sm">
+                                <button type="submit" class="btn btn-warning py-2.5 fw-bold shadow-sm">
                                     <i class="bi bi-shield-check me-2"></i> Submit Verification Request
                                 </button>
                                 <a href="{{url_for('customer_pages',page_name='dashboard')}}"
@@ -128,36 +128,36 @@
         </div>
     </main>
 
-    <footer class="bg-warning text-white text-center py-4 mt-auto">
-        <div class="container small">
+    <!-- <footer class="bg-warning text-white text-center py-4 mt-auto">
+        <div class="container small"> -->
             <!-- Social & Contact Links -->
-            <div class="mb-3">
+            <!-- <div class="mb-3"> -->
                 <!-- github -->
-                <div>
+                <!-- <div>
                     <a href="https://github.com/MichaelDanielLemakanit" class="text-black mx-3 text-decoration-none"
-                        target="_blank">
+                        target="_blank"> -->
                         <!-- github icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-github" viewBox="0 0 16 16">
                             <path
                                 d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
                         </svg>
                         GitHub
                     </a>
-                </div>
+                </div> -->
                 <!-- whatsapp -->
-                <a href="https://wa.me/254756295128" class="text-black mx-3 text-decoration-none" target="_blank">
+                <!-- <a href="https://wa.me/254756295128" class="text-black mx-3 text-decoration-none" target="_blank"> -->
                     <!-- whatsapp icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-whatsapp" viewBox="0 0 16 16">
                         <path
-                            d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
-                    </svg>
+                            d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" /> -->
+                    <!-- </svg>
                     WhatsApp
                 </a>
-                <!-- email -->
+                email
                 <a href="mailto:your.michaellemakanit.com" class="text-black mx-3 text-decoration-none">
-                    <!-- email icon -->
+                    email icon
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-envelope-arrow-up-fill" viewBox="0 0 16 16">
                         <path
@@ -167,10 +167,10 @@
                     </svg>
                     michaellemakanit@gmail.com
                 </a>
-                <!-- linkedin -->
-                <a href="https://www.linkedin.com/in/daniel-lemakanit-30ba9b252/"
+                linkedin -->
+                <!-- <a href="https://www.linkedin.com/in/daniel-lemakanit-30ba9b252/"
                     class="text-black mx-3 text-decoration-none" target="_blank">
-                    <!-- linkedin icon -->
+                    linkedin icon
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-linkedin" viewBox="0 0 16 16">
                         <path
@@ -178,14 +178,14 @@
                     </svg>
                     LinkedIn
                 </a>
-            </div>
+            </div> -->
 
             <!-- Copyright Text -->
-            <div class="container text-muted small">
+            <!-- <div class="container text-muted small">
                 &copy; 2026 Nairobi Delivery App. Logistics Authentication Node.
-            </div>
-        </div>
-    </footer>
+            </div> -->
+        <!-- </div>
+    </footer> -->
 
     <script>
         document.getElementById('mpesa_code').addEventListener('input', function (e) {
